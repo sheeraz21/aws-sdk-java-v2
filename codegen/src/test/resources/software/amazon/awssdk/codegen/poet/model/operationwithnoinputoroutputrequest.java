@@ -38,6 +38,7 @@ public final class OperationWithNoInputOrOutputRequest extends JsonProtocolTests
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         return hashCode;
     }
 
@@ -50,6 +51,9 @@ public final class OperationWithNoInputOrOutputRequest extends JsonProtocolTests
             return false;
         }
         if (!(obj instanceof OperationWithNoInputOrOutputRequest)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         return true;

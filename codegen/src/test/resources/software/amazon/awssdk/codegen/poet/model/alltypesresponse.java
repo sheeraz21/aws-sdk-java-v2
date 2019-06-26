@@ -919,6 +919,7 @@ public final class AllTypesResponse extends JsonProtocolTestsResponse implements
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         hashCode = 31 * hashCode + Objects.hashCode(stringMember());
         hashCode = 31 * hashCode + Objects.hashCode(integerMember());
         hashCode = 31 * hashCode + Objects.hashCode(booleanMember());
@@ -961,6 +962,9 @@ public final class AllTypesResponse extends JsonProtocolTestsResponse implements
             return false;
         }
         if (!(obj instanceof AllTypesResponse)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         AllTypesResponse other = (AllTypesResponse) obj;

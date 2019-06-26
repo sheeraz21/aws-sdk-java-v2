@@ -193,6 +193,7 @@ public final class NestedContainersRequest extends JsonProtocolTestsRequest impl
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         hashCode = 31 * hashCode + Objects.hashCode(listOfListOfStrings());
         hashCode = 31 * hashCode + Objects.hashCode(listOfListOfListOfStrings());
         hashCode = 31 * hashCode + Objects.hashCode(mapOfStringToListOfListOfStrings());
@@ -208,6 +209,9 @@ public final class NestedContainersRequest extends JsonProtocolTestsRequest impl
             return false;
         }
         if (!(obj instanceof NestedContainersRequest)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         NestedContainersRequest other = (NestedContainersRequest) obj;

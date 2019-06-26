@@ -40,6 +40,7 @@ public final class EventStreamOperationRequest extends JsonProtocolTestsRequest 
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         return hashCode;
     }
 
@@ -52,6 +53,9 @@ public final class EventStreamOperationRequest extends JsonProtocolTestsRequest 
             return false;
         }
         if (!(obj instanceof EventStreamOperationRequest)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         return true;

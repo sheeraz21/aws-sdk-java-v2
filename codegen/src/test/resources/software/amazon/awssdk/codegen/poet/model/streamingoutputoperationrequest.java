@@ -38,6 +38,7 @@ public final class StreamingOutputOperationRequest extends JsonProtocolTestsRequ
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         return hashCode;
     }
 
@@ -50,6 +51,9 @@ public final class StreamingOutputOperationRequest extends JsonProtocolTestsRequ
             return false;
         }
         if (!(obj instanceof StreamingOutputOperationRequest)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         return true;

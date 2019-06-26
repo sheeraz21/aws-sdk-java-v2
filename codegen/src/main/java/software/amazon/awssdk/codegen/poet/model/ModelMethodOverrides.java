@@ -57,6 +57,12 @@ public class ModelMethodOverrides {
                                                      .addStatement("return false")
                                                      .endControlFlow();
 
+        if (poetExtensions.isRequest(shapeModel) || poetExtensions.isResponse(shapeModel)) {
+            methodBuilder.beginControlFlow("if (!super.equals(obj))")
+                         .addStatement("return false")
+                         .endControlFlow();
+        }
+
         if (!shapeModel.getNonStreamingMembers().isEmpty()) {
             methodBuilder.addStatement("$T other = ($T) obj", className, className);
         }
@@ -114,6 +120,11 @@ public class ModelMethodOverrides {
                                                      .addAnnotation(Override.class)
                                                      .addModifiers(Modifier.PUBLIC)
                                                      .addStatement("int hashCode = 1");
+
+
+        if (poetExtensions.isRequest(shapeModel) || poetExtensions.isResponse(shapeModel)) {
+            methodBuilder.addStatement("hashCode = 31 * hashCode + super.hashCode()");
+        }
 
         shapeModel.getNonStreamingMembers()
                   .forEach(m -> methodBuilder.addStatement(

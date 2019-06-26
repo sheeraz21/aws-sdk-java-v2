@@ -36,6 +36,7 @@ public final class EventStreamOperationWithOnlyInputResponse extends JsonProtoco
     @Override
     public int hashCode() {
         int hashCode = 1;
+        hashCode = 31 * hashCode + super.hashCode();
         return hashCode;
     }
 
@@ -48,6 +49,9 @@ public final class EventStreamOperationWithOnlyInputResponse extends JsonProtoco
             return false;
         }
         if (!(obj instanceof EventStreamOperationWithOnlyInputResponse)) {
+            return false;
+        }
+        if (!super.equals(obj)) {
             return false;
         }
         return true;
